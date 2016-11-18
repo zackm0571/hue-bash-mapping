@@ -44,5 +44,11 @@ set-color-xy(){
 set-color-sat(){
 	curl $BASE_API/$USER/lights/$1/state -H CONTENT_JSON -X PUT -d '{"on":true, "sat":'$2'}' | jq .
 }
+set-brightness(){
+	curl $BASE_API/$USER/lights/$1/state -H CONTENT_JSON -X PUT -d '{"on":true, "bri":'$2'}' | jq .
+}
 
+modify_light_arg(){
+	curl $BASE_API/$USER/lights/$1/state -H CONTENT_JSON -X PUT -d '{ "'$2'":'$3'}' | jq .
+}
 $@
